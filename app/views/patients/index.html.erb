@@ -1,1 +1,5 @@
 <h1>Patient index</h1>
+<h3>Adult patients in alphabetical order:</h3>
+<% @patients.alphabetical_adult.each do |patient| %>
+  <p><%= patient.name %></p>
+  <% end  %>
