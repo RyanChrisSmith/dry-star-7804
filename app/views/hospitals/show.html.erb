@@ -4,6 +4,6 @@
 <strong>Doctors at this hospital: </strong>
 <% @hospital.doctor_patient_count.each do |doctor| %>
 <div id="doctor-<%= doctor.id %>">
-<p>* <%= doctor.name %> : <%= doctor.total %> patients </p>
-</div>
-<% end %>
+  <p>* <%= doctor.name %> : <%= doctor.total %> patients </p>
+  </div>
+  <% end %>

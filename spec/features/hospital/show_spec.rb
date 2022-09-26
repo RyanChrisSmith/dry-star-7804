@@ -38,14 +38,14 @@ RSpec.describe 'Hospital show page' do
 
   it 'will show the number of patients for each doctor and sort from most to least' do
     # And next to each doctor I see the number of patients associated with the doctor,
+    visit hospital_path(@grey)
+
     within("#doctor-#{@meredith.id}") do
       expect(page).to have_content("4 patients")
       expect(page).to_not have_content("2 patients")
     end
     #  And I see the list of doctors is ordered from most number of patients to least number of patients
-    expect(@meredith).to appear_before(@alex)
-    expect(@alex).to appear_before(@miranda)
-    expect(@miranda).to appear_before(@derek)
+    expect(@meredith.name).to appear_before(@derek.name)
     #  (Doctor patient counts should be a single query)
   end
 end
