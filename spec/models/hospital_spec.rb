@@ -36,9 +36,8 @@ RSpec.describe Hospital do
       DoctorPatient.create!(doctor: @derek, patient: @zola)
     end
 
-    xit '#patient_count' do
-    require 'pry' ; binding.pry
-      expect(@grey.doctor_patient_count).to eq(4)
+    it '#patient_count' do
+      expect(@grey.doctor_patient_count.first.total).to eq(4)
     end
   end
 end

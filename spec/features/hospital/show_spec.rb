@@ -36,7 +36,7 @@ RSpec.describe 'Hospital show page' do
     expect(page).to_not have_content("Miranda Bailey")
   end
 
-  xit 'will show the number of patients for each doctor and sort from most to least' do
+  it 'will show the number of patients for each doctor and sort from most to least' do
     # And next to each doctor I see the number of patients associated with the doctor,
     within("#doctor-#{@meredith.id}") do
       expect(page).to have_content("4 patients")
