@@ -25,7 +25,7 @@ RSpec.describe 'Hospital show page' do
     DoctorPatient.create!(doctor: @derek, patient: @zola)
   end
 
-  it '' do
+  it 'shoulod display all doctors at the hospital' do
     # When I visit a hospital's show page
     visit hospital_path(@grey)
     # I see the hospital's name
@@ -34,6 +34,9 @@ RSpec.describe 'Hospital show page' do
     expect(page).to have_content("Meredith Grey")
     expect(page).to have_content("Derek Shepherd")
     expect(page).to_not have_content("Miranda Bailey")
+  end
+
+  xit 'will show the number of patients for each doctor and sort from most to least' do
     # And next to each doctor I see the number of patients associated with the doctor,
     within("#doctor-#{@meredith.id}") do
       expect(page).to have_content("4 patients")

@@ -1,1 +1,7 @@
-<h1>Hospital show page</h1>
+<h1><%= @hospital.name %>'s show page</h1>
+<br>
+<strong>Doctors at this hospital: </strong>
+<% @hospital.doctors.each do |doctor| %>
+<sec id="doctor-<%= doctor.id %>">
+<p>* <%= doctor.name %></p>
+<% end  %>
