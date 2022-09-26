@@ -7,9 +7,9 @@ class Hospital < ApplicationRecord
 
 
   def doctor_patient_count
-    doctors
-    .select("patients.*, count(patients.name) as total")
-    .group(:id)
-    .order("total desc")
+    doctors.joins(:patients)
+    .group('doctors.id')
+    .select('doctors.*, count(patients.id) as count')
+    .order('count desc')
   end
 end
