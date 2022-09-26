@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe 'Doctors show page' do 
-  before :each do 
+RSpec.describe 'Doctors show page' do
+  before :each do
     @grey = Hospital.create!(name: 'Grey Sloan Memorial Hospital')
     @seaside = Hospital.create!(name: 'Seaside Health & Wellness Center')
     @swedish = Hospital.create!(name: 'Swedish Medical Center')
-    @meredith = @grey.doctors.create!(name: 'Meredith Greay', specialty: 'General Surgery', university: 'Harvard University')
+    @meredith = @grey.doctors.create!(name: 'Meredith Grey', specialty: 'General Surgery', university: 'Harvard University')
     @alex = @seaside.doctors.create!(name: 'Alex Karev', specialty: 'Pediatric Surgery', university: 'Johns Hopkins University')
     @miranda = @swedish.doctors.create!(name: 'Miranda Bailey', specialty: 'General Surgery', university: 'Stanford University')
     @derek = @grey.doctors.create!(name: 'Derek Shepherd', specialty: 'Attending Surgeon', university: 'University of Pennsylvania')
@@ -32,8 +32,12 @@ RSpec.describe 'Doctors show page' do
   #  - university where they got their doctorate
   expect(page).to have_content(@meredith.university)
   # And I see the name of the hospital where this doctor works
-  expect(page).to have_content(@meredith.hospital)
+  expect(page).to have_content(@meredith.hospital.name)
   # And I see the names of all of the patients this doctor has
-  expect(page).to have_content(@meredith.patients)
-  #   end
+  expect(page).to have_content(@katie.name)
+  expect(page).to have_content(@danny.name)
+  expect(page).to have_content(@rebecca.name)
+  expect(page).to have_content(@zola.name)
+  end
+
 end
