@@ -22,22 +22,35 @@ RSpec.describe 'Doctors show page' do
   end
 
   it 'will display all the doctors demographic info' do
-  # When I visit a doctor's show page
-  visit doctor_path(@meredith)
-  # I see all of that doctor's information including:
-  #  - name
-  expect(page).to have_content(@meredith.name)
-  #  - specialty
-  expect(page).to have_content(@meredith.specialty)
-  #  - university where they got their doctorate
-  expect(page).to have_content(@meredith.university)
-  # And I see the name of the hospital where this doctor works
-  expect(page).to have_content(@meredith.hospital.name)
-  # And I see the names of all of the patients this doctor has
-  expect(page).to have_content(@katie.name)
-  expect(page).to have_content(@danny.name)
-  expect(page).to have_content(@rebecca.name)
-  expect(page).to have_content(@zola.name)
+    # When I visit a doctor's show page
+    visit doctor_path(@meredith)
+    # I see all of that doctor's information including:
+    #  - name
+    expect(page).to have_content(@meredith.name)
+    #  - specialty
+    expect(page).to have_content(@meredith.specialty)
+    #  - university where they got their doctorate
+    expect(page).to have_content(@meredith.university)
+    # And I see the name of the hospital where this doctor works
+    expect(page).to have_content(@meredith.hospital.name)
+    # And I see the names of all of the patients this doctor has
+    expect(page).to have_content(@katie.name)
+    expect(page).to have_content(@danny.name)
+    expect(page).to have_content(@rebecca.name)
+    expect(page).to have_content(@zola.name)
+  end
+
+  it 'can remove a patient from the doctors caseload' do
+    # When I visit a Doctor's show page
+    visit doctor_path(@meredith)
+    # Next to each patient's name, I see a button to remove that patient from that doctor's caseload
+    expect(page).to have_button("Remove Katie Bryce")
+    click_button("Remove Katie Bryce")
+    # When I click that button for one patient
+    # I'm brought back to the Doctor's show page
+    expect(current_path).to eq(doctor_path(@meredith))
+      # And I no longer see that patient's name listed
+    expect(page).to_not have_content(@katie.name)
   end
 
 end

@@ -3,7 +3,8 @@
 <p>University: <%= @doctor.university %></p>
 <br>
 <p>Hospital: <%= @doctor.hospital.name %></p>
+
 <strong>Patients: </strong>
 <% @doctor.patients.each do |patient| %>
-<p><%= patient.name %></p>
+  <p><%= patient.name %> <%= button_to "Remove #{patient.name}", doctor_patient_path(@doctor, patient), method: :delete %></p>
 <% end  %>
